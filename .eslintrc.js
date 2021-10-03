@@ -4,9 +4,9 @@ module.exports = {
     node: true,
     jest: true,
   },
-  parser: "@typescript-eslint/parser",
+  parser: '@typescript-eslint/parser',
   parserOptions: {
-    extraFileExtensions: [".ts, .tsx"],
+    extraFileExtensions: ['.ts, .tsx'],
     tsconfigRootDir: __dirname,
   },
   globals: {
@@ -14,23 +14,23 @@ module.exports = {
     fetch: true,
   },
   extends: [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:jest/recommended",
-    "plugin:jest/style",
-    "plugin:prettier/recommended",
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:jest/recommended',
+    'plugin:jest/style',
+    'plugin:prettier/recommended',
   ],
-  plugins: ["jest", "@typescript-eslint", "prettier"],
+  plugins: ['jest', '@typescript-eslint', 'prettier'],
   rules: {
-    "@typescript-eslint/no-unused-vars": "error",
-    "@typescript-eslint/explicit-module-boundary-types": "off",
-    "@typescript-eslint/no-explicit-any": "error",
+    '@typescript-eslint/no-unused-vars': 'error',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-explicit-any': 'error',
   },
   overrides: [
     {
-      files: ["*.test.ts", "*.test.tsx"],
+      files: ['*.test.ts', '*.test.tsx'],
       rules: {
-        "@typescript-eslint/no-non-null-assertion": "off",
+        '@typescript-eslint/no-non-null-assertion': 'off',
       },
     },
   ],

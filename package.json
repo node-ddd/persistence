@@ -9,7 +9,7 @@
   "module": "lib/esm/index.js",
   "types": "lib/cjs/index.d.ts",
   "scripts": {
-    "lint": "eslint --cache ./src",
+    "lint": "eslint ./src",
     "test": "jest",
     "clean": "rimraf ./lib",
     "prebuild": "yarn clean",
