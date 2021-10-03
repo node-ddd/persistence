@@ -15,14 +15,6 @@ export class InMemoryStorage<A extends Aggregate> {
     this.trash = new Map();
   }
 
-  private updateAggregates = (aggregates: Map<A['id'], A>) => {
-    this.aggregates = aggregates;
-  };
-
-  private updateTrash = (trash: Map<A['id'], A>) => {
-    this.trash = trash;
-  };
-
   findById = (id: A['id']): A | null =>
     cloneDeep(this.aggregates.get(id)) ?? null;
 
