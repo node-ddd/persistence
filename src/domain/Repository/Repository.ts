@@ -1,5 +1,5 @@
 export interface Aggregate {
-  id: string;
+  id: string | number;
 }
 
 export interface GetAllInput {
