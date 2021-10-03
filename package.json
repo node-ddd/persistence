@@ -1,8 +1,11 @@
 {
-  "name": "@ddd/persistence",
+  "name": "@node-ddd/persistence",
   "version": "0.0.1",
   "description": "Persistence layer for DDD applications",
-  "repository": "https://github.com/node-ddd/persistence",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/node-ddd/persistence.git"
+  },
   "author": "Samuel Briole",
   "license": "MIT",
   "main": "lib/cjs/index.js",
@@ -13,7 +16,8 @@
     "test": "jest",
     "clean": "rimraf ./lib",
     "prebuild": "yarn clean",
-    "build": "tsc -p tsconfig.json && tsc -p tsconfig.node.json"
+    "build": "tsc -p tsconfig.json && tsc -p tsconfig.node.json",
+    "prepublishOnly": "yarn clean && yarn build"
   },
   "peerDependencies": {
     "typeorm": "^0.2"
