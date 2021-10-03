@@ -9,7 +9,9 @@
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "strictPropertyInitialization": false,
+    "experimentalDecorators": true
   },
-  "exclude": ["src/**/*.test.ts"]
+  "exclude": ["src/**/*.test.ts", "src/**/*.test-typeorm.ts"]
 }
