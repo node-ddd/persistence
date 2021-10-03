@@ -1,6 +1,6 @@
 {
   "name": "@node-ddd/persistence",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Persistence layer for DDD applications",
   "repository": {
     "type": "git",
@@ -11,6 +11,15 @@
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
   "types": "lib/cjs/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "exports": {
+    ".": {
+      "import": "./lib/esm/index.js",
+      "require": "./lib/cjs/index.js"
+    }
+  },
   "scripts": {
     "lint": "eslint ./src",
     "test": "jest",
