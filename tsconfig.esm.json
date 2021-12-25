@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "lib/esm",
+    "module": "esnext",
+    "target": "es5",
+    "noEmit": false
+  },
+  "exclude": ["src/**/*.test.ts"]
+}
