@@ -69,13 +69,15 @@ export class TypeormRepository<A extends Aggregate, Entity>
   };
 
   getById = (id: A['id']): Promise<A> =>
-    this.getFromQuery(() => this.repository.findOneOrFail(id));
+    this.getFromQuery(() => this.repository.findOneOrFail(id.toString()));
 
   getByIds = (ids: Array<A['id']>): Promise<Array<A>> =>
-    this.getManyFromQuery(() => this.repository.findByIds(ids));
+    this.getManyFromQuery(() =>
+      this.repository.findByIds(ids.map(id => id.toString())),
+    );
 
   findById = (id: A['id']): Promise<A | null> =>
-    this.findFromQuery(() => this.repository.findOne(id));
+    this.findFromQuery(() => this.repository.findOne(id.toString()));
 
   store = async <B extends A>(aggregate: B): Promise<B> => {
     await this.storeAll([aggregate]);
@@ -96,17 +98,17 @@ export class TypeormRepository<A extends Aggregate, Entity>
 
   delete = async (id: A['id']): Promise<void> => {
     if (this.softDelete) {
-      await this.repository.softDelete(id);
+      await this.repository.softDelete(id.toString());
     } else {
-      await this.repository.delete(id);
+      await this.repository.delete(id.toString());
     }
   };
 
   deleteAll = async (ids: ReadonlyArray<A['id']>): Promise<void> => {
     if (this.softDelete) {
-      await this.repository.softDelete(ids);
+      await this.repository.softDelete(ids.map(id => id.toString()));
     } else {
-      await this.repository.delete(ids);
+      await this.repository.delete(ids.map(id => id.toString()));
     }
   };
 

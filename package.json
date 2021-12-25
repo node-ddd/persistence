@@ -1,6 +1,6 @@
 {
   "name": "@node-ddd/persistence",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Persistence layer for DDD applications",
   "repository": {
     "type": "git",

@@ -5,9 +5,9 @@ import { Predicate } from './Predicate';
 export class InMemoryStorage<A extends Aggregate> {
   aggregateName: string;
 
-  private aggregates: Map<A['id'], A>;
+  private aggregates: Map<string, A>;
 
-  private trash: Map<A['id'], A>;
+  private trash: Map<string, A>;
 
   constructor(aggregateName: string) {
     this.aggregateName = aggregateName;
@@ -16,7 +16,7 @@ export class InMemoryStorage<A extends Aggregate> {
   }
 
   findById = (id: A['id']): A | null =>
-    cloneDeep(this.aggregates.get(id)) ?? null;
+    cloneDeep(this.aggregates.get(id.toString())) ?? null;
 
   getById = (id: A['id']): A => {
     const aggregate = this.findById(id);
@@ -57,7 +57,7 @@ export class InMemoryStorage<A extends Aggregate> {
   };
 
   store = <B extends A>(aggregate: B): B => {
-    this.aggregates.set(aggregate.id, aggregate);
+    this.aggregates.set(aggregate.id.toString(), aggregate);
     return aggregate;
   };
 
@@ -65,7 +65,7 @@ export class InMemoryStorage<A extends Aggregate> {
     aggregates.map(this.store);
 
   private storeInTrash = (aggregate: A) => {
-    this.trash.set(aggregate.id, aggregate);
+    this.trash.set(aggregate.id.toString(), aggregate);
     return aggregate;
   };
 
@@ -73,7 +73,7 @@ export class InMemoryStorage<A extends Aggregate> {
     const aggregate = this.findById(id);
     if (aggregate) {
       this.storeInTrash(aggregate);
-      this.aggregates.delete(id);
+      this.aggregates.delete(id.toString());
     }
   };
 

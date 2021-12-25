@@ -1,5 +1,9 @@
+export interface Id {
+  toString(): string;
+}
+
 export interface Aggregate {
-  id: string | number;
+  id: Id;
 }
 
 export interface GetAllInput {
