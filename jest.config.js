@@ -8,6 +8,7 @@ const baseConfig = {
   preset: 'ts-jest',
   testEnvironment: 'node',
   testPathIgnorePatterns: ['/lib/', '/node_modules/'],
+  setupFilesAfterEnv: ['@relmify/jest-fp-ts'],
   globals: {
     'ts-jest': {
       diagnostics: false,
