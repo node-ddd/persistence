@@ -12,7 +12,7 @@ export interface GetAllInput {
 
 export interface Repository<A extends Aggregate> {
   getById(id: A['id']): Promise<A>;
-  getByIds(ids: ReadonlyArray<A['id']>): Promise<Array<A>>;
+  getByIds(ids: ReadonlyArray<A['id']>): Promise<ReadonlyArray<A>>;
   findById(id: A['id']): Promise<A | null>;
   store<B extends A>(aggregate: B): Promise<B>;
   storeAll<B extends A>(

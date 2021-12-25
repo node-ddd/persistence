@@ -29,10 +29,14 @@
     "prepublishOnly": "yarn clean && yarn build"
   },
   "peerDependencies": {
+    "fp-ts": "^2.11.5",
     "typeorm": "^0.2"
   },
   "peerDependenciesMeta": {
     "typeorm": {
+      "optional": true
+    },
+    "fp-ts": {
       "optional": true
     }
   },
@@ -50,6 +54,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-jest": "^24.5.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "fp-ts": "^2.11.5",
     "jest": "^27.2.4",
     "prettier": "^2.4.1",
     "rimraf": "^3.0.2",
