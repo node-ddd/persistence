@@ -4,7 +4,7 @@ import {
   ObjectType,
   Repository as TRepository,
 } from 'typeorm';
-import { Aggregate, GetAllInput, FRepository } from '../../domain';
+import { Aggregate, GetAllInput, FRepository } from '../../../domain';
 import * as Either from 'fp-ts/lib/Either';
 import * as TaskEither from 'fp-ts/lib/TaskEither';
 import * as ReadonlyArray from 'fp-ts/lib/ReadonlyArray';

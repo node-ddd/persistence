@@ -1,4 +1,2 @@
-export * from './InMemoryRepository';
-export * from './InMemoryFRepository';
-export * from './TypeormRepository';
-export * from './TypeormFRepository';
+export * from './in-memory';
+export * from './typeorm';

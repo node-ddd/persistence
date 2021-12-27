@@ -2,7 +2,7 @@ import {
   Aggregate,
   GetAllInput,
   Repository,
-} from '../../domain/Repository/Repository';
+} from '../../../domain/Repository/Repository';
 import { InMemoryStorage } from './InMemoryStorage';
 import { Predicate } from './Predicate';
 

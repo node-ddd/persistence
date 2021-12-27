@@ -1,5 +1,5 @@
 import cloneDeep from 'lodash.clonedeep';
-import { Aggregate } from '../../domain/Repository/Repository';
+import { Aggregate } from '../../../domain/Repository/Repository';
 import { Predicate } from './Predicate';
 
 export class InMemoryStorage<A extends Aggregate> {

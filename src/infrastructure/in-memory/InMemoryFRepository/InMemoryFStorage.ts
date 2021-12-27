@@ -7,7 +7,7 @@ import * as Eq from 'fp-ts/lib/Eq';
 import * as ReadonlyMap from 'fp-ts/lib/ReadonlyMap';
 import { pipe } from 'fp-ts/lib/function';
 import { Predicate } from '../InMemoryRepository';
-import { Aggregate } from '../../domain';
+import { Aggregate } from '../../../domain';
 
 interface InMemoryFStorageProps<A extends Aggregate, E> {
   aggregateName: string;

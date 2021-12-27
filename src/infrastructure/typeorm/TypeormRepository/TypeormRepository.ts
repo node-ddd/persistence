@@ -4,7 +4,7 @@ import {
   ObjectType,
   Repository as TRepository,
 } from 'typeorm';
-import { Aggregate, GetAllInput, Repository } from '../../domain';
+import { Aggregate, GetAllInput, Repository } from '../../../domain';
 
 export type TypeormSerializer<A extends Aggregate, Entity> = (
   aggregate: A,

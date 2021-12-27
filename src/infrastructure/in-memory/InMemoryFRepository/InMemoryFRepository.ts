@@ -4,7 +4,7 @@ import * as Eq from 'fp-ts/lib/Eq';
 
 import { InMemoryFStorage } from './InMemoryFStorage';
 import { Predicate } from '../InMemoryRepository';
-import { Aggregate, FRepository, GetAllInput } from '../../domain';
+import { Aggregate, FRepository, GetAllInput } from '../../../domain';
 
 export interface InMemoryFRepositoryProps<A extends Aggregate, E> {
   aggregateName: string;
