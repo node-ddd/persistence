@@ -67,7 +67,16 @@ export class KnexFRepository<A extends Aggregate, E = Error>
 
   getById = (id: A['id']): TaskEither.TaskEither<E, A> =>
     this.getFromQuery(() =>
-      this.knex.table(this.table).where({ id: id.toString() }).first(),
+      this.knex
+        .table(this.table)
+        .where({ id: id.toString() })
+        .first()
+        .then(a => {
+          if (!a) {
+            throw new Error(`Could not found ${id} in table ${this.table}`);
+          }
+          return a;
+        }),
     );
 
   findById = (id: A['id']): TaskEither.TaskEither<E, Option.Option<A>> =>
