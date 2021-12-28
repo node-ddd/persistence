@@ -57,7 +57,7 @@ export class TypeormFRepository<A extends Aggregate, Entity, E = Error>
     return this.connection.getRepository(this.entity);
   }
 
-  protected tryCatch = <T>(fn: () => Promise<T>) =>
+  private tryCatch = <T>(fn: () => Promise<T>) =>
     TaskEither.tryCatch(fn, e => this.errorBuilder((e as Error).message));
 
   protected getFromQuery = (
