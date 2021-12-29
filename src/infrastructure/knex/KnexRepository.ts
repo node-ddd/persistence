@@ -37,6 +37,8 @@ export class KnexRepository<A extends Aggregate> implements Repository<A> {
   ): Promise<ReadonlyArray<A>> =>
     makeQuery().then(a => a.map(this.deserializer));
 
+  protected baseQuery = () => this.knex.table(this.table).select();
+
   getById = (id: A['id']): Promise<A> =>
     this.getFromQuery(() =>
       this.knex
@@ -53,19 +55,19 @@ export class KnexRepository<A extends Aggregate> implements Repository<A> {
 
   findById = (id: A['id']): Promise<A | null> =>
     this.findFromQuery(() =>
-      this.knex.table(this.table).where({ id: id.toString() }).first(),
+      this.baseQuery().where({ id: id.toString() }).first(),
     );
 
   getByIds = (ids: ReadonlyArray<A['id']>): Promise<readonly A[]> =>
     this.getManyFromQuery(() =>
-      this.knex.table(this.table).whereIn(
+      this.baseQuery().whereIn(
         'id',
         ids.map(id => id.toString()),
       ),
     );
 
   getAll = (): Promise<readonly A[]> =>
-    this.getManyFromQuery(() => this.knex.table(this.table).select());
+    this.getManyFromQuery(() => this.baseQuery());
 
   delete = async (id: A['id']): Promise<void> => {
     await this.knex.table(this.table).where({ id: id.toString() }).del();

@@ -65,10 +65,11 @@ export class KnexFRepository<A extends Aggregate, E = Error>
       ),
     );
 
+  protected baseQuery = () => this.knex.table(this.table).select();
+
   getById = (id: A['id']): TaskEither.TaskEither<E, A> =>
     this.getFromQuery(() =>
-      this.knex
-        .table(this.table)
+      this.baseQuery()
         .where({ id: id.toString() })
         .first()
         .then(a => {
@@ -81,21 +82,21 @@ export class KnexFRepository<A extends Aggregate, E = Error>
 
   findById = (id: A['id']): TaskEither.TaskEither<E, Option.Option<A>> =>
     this.findFromQuery(() =>
-      this.knex.table(this.table).where({ id: id.toString() }).first(),
+      this.baseQuery().where({ id: id.toString() }).first(),
     );
 
   getByIds = (
     ids: ReadonlyArray<A['id']>,
   ): TaskEither.TaskEither<E, readonly A[]> =>
     this.getManyFromQuery(() =>
-      this.knex.table(this.table).whereIn(
+      this.baseQuery().whereIn(
         'id',
         ids.map(id => id.toString()),
       ),
     );
 
   getAll = (): TaskEither.TaskEither<E, readonly A[]> =>
-    this.getManyFromQuery(() => this.knex.table(this.table).select());
+    this.getManyFromQuery(() => this.baseQuery());
 
   delete = (id: A['id']): TaskEither.TaskEither<E, void> =>
     pipe(
