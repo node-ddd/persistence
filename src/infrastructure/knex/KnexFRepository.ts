@@ -1,6 +1,6 @@
 import * as Either from 'fp-ts/lib/Either';
 import { pipe } from 'fp-ts/lib/function';
-import Option from 'fp-ts/lib/Option';
+import * as Option from 'fp-ts/lib/Option';
 import * as ReadonlyArray from 'fp-ts/lib/ReadonlyArray';
 import * as TaskEither from 'fp-ts/lib/TaskEither';
 import { Knex } from 'knex';
